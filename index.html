@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+    <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+
+    <style>
+        body {
+            background-color: whitesmoke;
+        }
+        .content {
+            padding: 5vh 5vw;
+            background-color: whitesmoke;
+        }
+        .table_area {
+            width: 80vw;
+            height: 60vh;
+            background-color: white;
+            box-shadow: 3px 3px 5px lightgrey;
+            overflow: scroll;
+        }
+
+        .rules_area {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .rule {
+            min-width: 15vw;
+            min-height: 6em;
+            background-color: white;
+            box-shadow: 2px 2px 5px lightgrey;
+            margin: 1em 1em 0em 0em;
+            padding: .5em;
+        }
+
+        .rule h1 {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .rule h2 {
+            font-size: 1.25em;
+        }
+
+        .add_rule {
+            margin: 1em 1em 0em 0em;
+            padding: .5em;
+            display: flex;
+        }
+
+        .new_rule {
+            width: 25em;
+            background-color: white;
+            box-shadow: 5px 5px 5px lightgray;
+            border: solid 1px lightgrey;
+            position: absolute;
+            right: 20vw;
+            top: 5vh;
+            padding: 1em;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+    </style>
+
+    <script>
+        function toggleModal() {
+            $("#ruleModal").toggleClass("hidden");
+        }
+    </script>
+</head>
+<body>
+    <div class="content">
+        <a href="#" class="btn btn-primary btn-raised">Show All</a> <a href="#" class="btn btn-default">Show Computed</a>
+        <div class="table_area">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Column 1</th>
+                        <th>Column 2</th>
+                        <th>Column 3</th>
+                        <th>Column 4</th>                                                
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Lange</td>
+                        <td>123 Lane</td>
+                        <td>Pittsburgh</td>
+                        <td>15226</td>
+                    </tr>
+                    <tr>
+                        <td>John Lange</td>
+                        <td>123 Lane</td>
+                        <td>Pittsburgh</td>
+                        <td>15226</td>
+                    </tr>
+                    <tr>
+                        <td>John Lange</td>
+                        <td>123 Lane</td>
+                        <td>Pittsburgh</td>
+                        <td>15226</td>
+                    </tr>
+                    <tr>
+                        <td>John Lange</td>
+                        <td>123 Lane</td>
+                        <td>Pittsburgh</td>
+                        <td>15226</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="rules_area">
+            <div class="rule">
+                <h1>Last Names <span class="badge badge-primary">331</span></h1>
+                <h2>Action: Keep</h2>
+                <h2>Column: A</h2>
+            </div>
+
+            <div class="rule">
+                <h1>Custom Rule <span class="badge badge-warning">28</span></h1>
+                <h2>Action: Remove</h2>
+                <h2>Column: C</h2>
+            </div>
+
+            <div class="add_rule">
+                <button class="btn btn-primary btn-raised" onClick="toggleModal()">Add Rule</button>
+            </div>
+        </div>
+
+        
+    </div>
+    <div class="new_rule" id="ruleModal">
+        <h1>Create New Rule</h1>
+        <div class="form-group">
+            <label for="ruleName">Rule Name</label>
+            <input type="text" class="form-control" id="ruleName" aria-describedby="ruleHelp" placeholder="Enter Rule Name">
+            <small id="ruleHelp" class="form-text text-muted">Subtitle text</small>
+        </div>
+        <div class="form-group">
+            <label for="ruleName">Column</label>
+            <select class="custom-select">
+                <option value="1" selected>Column 1</option>
+                <option value="2">Column 2</option>
+                <option value="3">Column 3</option>
+                <option value="4">Column 4</option>
+            </select>
+            <small id="ruleHelp" class="form-text text-muted">Choose which column will be matched in this rule</small>
+        </div>
+        <div class="form-group">
+            <label for="ruleName">Rule Type</label>
+            <select class="custom-select">
+                <option value="Keep" selected>Keep</option>
+                <option value="Remove">Remove</option>
+            </select>
+            <small id="ruleType" class="form-text text-muted">Choose whether to keep or remove rows that match this rule</small>
+        </div>
+        <div class="form-group">
+            <label for="ruleName">Match Text</label>
+            <textarea class="form-control" id="matchText" rows="8">
+Lange
+South
+Green
+Neill
+Wilson
+Watson
+            </textarea>
+            <small id="matchText" class="form-text text-muted">Paste list of values to match</small>
+        </div>
+        <div class="row justify-content-between align-items-center">
+            <div class="col"><button class="btn btn-primary btn-lg">Add</button></div>
+            <div class="col"><button class="btn btn-danger" onClick="toggleModal()">Cancel</button></div>
+        </div>
+    </div>
+</body>
+</html>
